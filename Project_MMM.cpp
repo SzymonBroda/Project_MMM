@@ -34,9 +34,6 @@ void __fastcall TForm1::A_SScroll(TObject *Sender, TScrollCode ScrollCode,
 }
 //---------------------------------------------------------------------------
 
-
-
-
 void __fastcall TForm1::T_SScroll(TObject *Sender, TScrollCode ScrollCode,
       int &ScrollPos)
 {
@@ -65,16 +62,8 @@ void __fastcall TForm1::alpha_Change(TObject *Sender)
          ShowMessage ("Niepoprawne wartoœci. Spróbuj ponownie.");
         }
   }
-
 }
 //---------------------------------------------------------------------------
-
-
-
-
-
-
-
 
 void __fastcall TForm1::T_Change(TObject *Sender)
 {
@@ -125,21 +114,6 @@ if(A_->Text !="")
 
 //---------------------------------------------------------------------------
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 void __fastcall TForm1::S1Click(TObject *Sender)
 {
      Form2->signal="unit_jump";
@@ -151,11 +125,6 @@ void __fastcall TForm1::S1Click(TObject *Sender)
      Form2->ShowModal();
 }
 //---------------------------------------------------------------------------
-
-
-
-
-
 
 void __fastcall TForm1::S3Click(TObject *Sender)
 {
@@ -194,11 +163,6 @@ void __fastcall TForm1::S2Click(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-
-
-
-
-
 void __fastcall TForm1::f_SScroll(TObject *Sender, TScrollCode ScrollCode,
       int &ScrollPos)
 {
@@ -217,9 +181,6 @@ void __fastcall TForm1::FormDeactivate(TObject *Sender)
         ShowMessage("Our form is deactivated");
 }
 //---------------------------------------------------------------------------
-
-
-
 
 void __fastcall TForm1::f_Change(TObject *Sender)
 {

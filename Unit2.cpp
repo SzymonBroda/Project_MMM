@@ -38,12 +38,6 @@ double TForm2::func(double x)
      return ret;
 }
 
-
-
-
-
-
-
 void __fastcall TForm2::FormActivate(TObject *Sender)
 {
           TCanvas * canv; // additional variable
@@ -125,6 +119,7 @@ void __fastcall TForm2::FormActivate(TObject *Sender)
      }
 }
 //---------------------------------------------------------------------------
+
 
 
 

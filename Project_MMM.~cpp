@@ -10,8 +10,8 @@
 #pragma link "PERFGRAP"
 #pragma resource "*.dfm"
 TForm1 *Form1;
-        double T,alpha,A,f;
-        double alpha_max=100,alpha_min=0,T_max=100,T_min=0,A_max=100,A_min=0,f_max=100,f_min=0;
+        double T,alpha,A,f=1;
+        double alpha_max=100,alpha_min=0,T_max=100,T_min=0,A_max=100,A_min=0,f_max=100,f_min=1;
         AnsiString a;
         AnsiString signal;
 //---------------------------------------------------------------------------
@@ -142,7 +142,6 @@ if(A_->Text !="")
 
 void __fastcall TForm1::S1Click(TObject *Sender)
 {
-     Form2->T=1/f;
      Form2->signal="unit_jump";
      Form2->n = 10;
      Form2->x1 = 0;
@@ -154,6 +153,59 @@ void __fastcall TForm1::S1Click(TObject *Sender)
 //---------------------------------------------------------------------------
 
 
+
+
+
+
+void __fastcall TForm1::S3Click(TObject *Sender)
+{
+
+     if(f_->Text =="")
+         ShowMessage ("Nie podano czêstotliwosci") ;
+     else
+     {
+        Form2->P=1/f;
+        Form2->signal="sine_wave";
+        Form2->n = 10;
+        Form2->x1 = 0;
+        Form2->x2 = 5;
+        Form2->y1 = -2;
+        Form2->y2 = 2;
+        Form2->ShowModal();
+     }
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::S2Click(TObject *Sender)
+{
+     if(f_->Text =="")
+         ShowMessage ("Nie podano czêstotliwosci") ;
+     else
+     {
+        Form2->P=1/f;
+        Form2->signal="rectangular_wave";
+        Form2->n = 10;
+        Form2->x1 = 0;
+        Form2->x2 = 5;
+        Form2->y1 = -2;
+        Form2->y2 = 2;
+        Form2->ShowModal();
+     }
+}
+//---------------------------------------------------------------------------
+
+
+
+
+
+
+void __fastcall TForm1::f_SScroll(TObject *Sender, TScrollCode ScrollCode,
+      int &ScrollPos)
+{
+           f_->Text=f_S->Position;
+}
+//---------------------------------------------------------------------------
+
 void __fastcall TForm1::FormActivate(TObject *Sender)
 {
 ShowMessage("Our form is activated");
@@ -162,44 +214,16 @@ ShowMessage("Our form is activated");
 
 void __fastcall TForm1::FormDeactivate(TObject *Sender)
 {
-        ShowMessage("Our form is deactivated");        
+        ShowMessage("Our form is deactivated");
 }
 //---------------------------------------------------------------------------
 
 
 
 
-void __fastcall TForm1::S3Click(TObject *Sender)
+void __fastcall TForm1::f_Change(TObject *Sender)
 {
-     Form2->T=1/f;
-     Form2->signal="sine_wave";
-     Form2->n = 10;
-     Form2->x1 = 0;
-     Form2->x2 = 5;
-     Form2->y1 = -2;
-     Form2->y2 = 2;
-     Form2->ShowModal();
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TForm1::S2Click(TObject *Sender)
-{
-     Form2->T=1/f;
-     Form2->signal="rectangular_wave";
-     Form2->n = 10;
-     Form2->x1 = 0;
-     Form2->x2 = 5;
-     Form2->y1 = -2;
-     Form2->y2 = 2;
-     Form2->ShowModal();
-}
-//---------------------------------------------------------------------------
-
-
-
-void __fastcall TForm1::f_SChange(TObject *Sender)
-{
-        if(f_->Text !="")
+     if(f_->Text !="")
   {
          try
          {
@@ -220,13 +244,5 @@ void __fastcall TForm1::f_SChange(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-
-
-void __fastcall TForm1::f_SScroll(TObject *Sender, TScrollCode ScrollCode,
-      int &ScrollPos)
-{
-           f_->Text=f_S->Position;
-}
-//---------------------------------------------------------------------------
 
 

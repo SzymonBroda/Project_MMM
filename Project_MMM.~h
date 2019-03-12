@@ -46,9 +46,9 @@ __published:	// IDE-managed Components
         void __fastcall FormDeactivate(TObject *Sender);
         void __fastcall S3Click(TObject *Sender);
         void __fastcall S2Click(TObject *Sender);
-        void __fastcall f_SChange(TObject *Sender);
         void __fastcall f_SScroll(TObject *Sender, TScrollCode ScrollCode,
           int &ScrollPos);
+        void __fastcall f_Change(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
         __fastcall TForm1(TComponent* Owner);
