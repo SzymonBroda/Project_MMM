@@ -19,11 +19,13 @@ private: // User declarations
 
 public:       // User declarations
      __fastcall TForm2(TComponent* Owner);
-     float x1, x2, y1, y2;
+     double x1, x2, y1, y2;
+     AnsiString signal;
+     double P; // Period 
      int n;
-     int ZoomX(float x);
-     int ZoomY(float y);
-     float func(float x);
+     int ZoomX(double x);
+     int ZoomY(double y);
+     double func(double x);
 };
 //---------------------------------------------------------------------------
 extern PACKAGE TForm2 *Form2;

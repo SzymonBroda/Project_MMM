@@ -1,10 +1,9 @@
 object Form2: TForm2
-  Left = 207
-  Top = 175
+  Left = 264
+  Top = 80
   AutoScroll = False
-  AutoSize = True
   Caption = 'Graph'
-  ClientHeight = 329
+  ClientHeight = 341
   ClientWidth = 1073
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -21,7 +20,8 @@ object Form2: TForm2
     Left = 0
     Top = 0
     Width = 1073
-    Height = 329
+    Height = 313
     Center = True
+    Transparent = True
   end
 end

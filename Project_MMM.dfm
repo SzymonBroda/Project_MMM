@@ -1,8 +1,8 @@
 object Form1: TForm1
-  Left = 708
-  Top = 53
-  Width = 619
-  Height = 157
+  Left = 215
+  Top = 185
+  Width = 811
+  Height = 148
   Caption = 'Project Piotr Pietruszka Szymon Broda'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -11,6 +11,8 @@ object Form1: TForm1
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
+  OnActivate = FormActivate
+  OnDeactivate = FormDeactivate
   PixelsPerInch = 96
   TextHeight = 13
   object alpha_T: TLabel
@@ -27,7 +29,7 @@ object Form1: TForm1
     ParentFont = False
   end
   object A_T: TLabel
-    Left = 432
+    Left = 424
     Top = 8
     Width = 24
     Height = 24
@@ -67,14 +69,34 @@ object Form1: TForm1
     Caption = '<0,100>'
   end
   object A_range: TLabel
-    Left = 416
+    Left = 408
     Top = 32
     Width = 39
     Height = 13
     Caption = '<0,100>'
   end
+  object f_T: TLabel
+    Left = 624
+    Top = 8
+    Width = 15
+    Height = 24
+    Caption = 'f'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsItalic]
+    ParentFont = False
+  end
+  object f_range: TLabel
+    Left = 600
+    Top = 32
+    Width = 39
+    Height = 13
+    Caption = '<1,100>'
+  end
   object A_: TEdit
-    Left = 464
+    Left = 456
     Top = 8
     Width = 121
     Height = 21
@@ -90,7 +112,7 @@ object Form1: TForm1
     OnChange = T_Change
   end
   object S1: TButton
-    Left = 56
+    Left = 160
     Top = 56
     Width = 177
     Height = 41
@@ -105,7 +127,7 @@ object Form1: TForm1
     OnClick = S1Click
   end
   object S2: TButton
-    Left = 408
+    Left = 512
     Top = 56
     Width = 177
     Height = 41
@@ -117,9 +139,10 @@ object Form1: TForm1
     Font.Style = []
     ParentFont = False
     TabOrder = 2
+    OnClick = S2Click
   end
   object S3: TButton
-    Left = 232
+    Left = 336
     Top = 56
     Width = 177
     Height = 41
@@ -131,6 +154,7 @@ object Form1: TForm1
     Font.Style = []
     ParentFont = False
     TabOrder = 3
+    OnClick = S3Click
   end
   object alpha_S: TScrollBar
     Left = 72
@@ -165,7 +189,7 @@ object Form1: TForm1
     OnScroll = T_SScroll
   end
   object A_S: TScrollBar
-    Left = 464
+    Left = 456
     Top = 32
     Width = 121
     Height = 17
@@ -173,5 +197,26 @@ object Form1: TForm1
     PageSize = 0
     TabOrder = 7
     OnScroll = A_SScroll
+  end
+  object f_: TEdit
+    Left = 648
+    Top = 8
+    Width = 121
+    Height = 21
+    TabOrder = 9
+    Text = '1'
+    OnChange = f_Change
+  end
+  object f_S: TScrollBar
+    Left = 648
+    Top = 32
+    Width = 121
+    Height = 17
+    Cursor = crHandPoint
+    Min = 1
+    PageSize = 0
+    Position = 1
+    TabOrder = 10
+    OnScroll = f_SScroll
   end
 end

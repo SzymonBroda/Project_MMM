@@ -4,6 +4,7 @@
 #pragma hdrstop
 
 #include "Unit2.h"
+#include "Project_MMM.h"
 #include <math.h>
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
@@ -16,33 +17,40 @@ __fastcall TForm2::TForm2(TComponent* Owner)
 }
 //---------------------------------------------------------------------------
 
- int TForm2::ZoomX(float x)
+ int TForm2::ZoomX(double x)
 {
      int ret;
      ret = xx1 + (int)((x-x1)*(xx2-xx1)/(x2-x1));
-     return ret;
+     return ret+2;
 }
 
-int TForm2::ZoomY(float y)
+int TForm2::ZoomY(double y)
 {
      int ret;
      ret = yy2 + (int)((y-y1)*(yy1-yy2)/(y2-y1));
-     return ret;
+     return ret+2;
 }
 
-float TForm2::func(float x)
+double TForm2::func(double x)
 {
-     float ret;
+     double ret;
      ret = sin(x);
      return ret;
 }
 
+
+
+
+
+
+
 void __fastcall TForm2::FormActivate(TObject *Sender)
 {
-     TCanvas * canv; // additional variable
+          TCanvas * canv; // additional variable
      int tx, ty;
      int i;
-     float x, y, h;
+     double x, y, u ;
+     const double h=0.001;
 
      canv = Image1->Canvas;
 
@@ -87,23 +95,42 @@ void __fastcall TForm2::FormActivate(TObject *Sender)
 
      // coordinates of the first point
      x = x1;
-     y = func(x);
-     h = (x2-x1)/n;
+     if(signal=="sine_wave") u=sin(x);
+     else if(signal=="unit_jump") u= x>0 ? 1:0;
+     else if(signal=="rectangular_wave")
+     {
+           int l=x/P;
+           u = x-l*P<=P/2 ? 1: -1 ;
+     }
+     y = func(u);
      tx = ZoomX(x);
      ty = ZoomY(y);
      canv->MoveTo(tx,ty);
 
      // The cycle of enumerating of points and drawing the connecting lines
-     for (i = 0; i < n; i++)
+     for (int i = 0; i < n/h ; i++)
      {
          x = x + h;
-         y = func(x);
+         if(signal=="sine_wave") u=sin(x/P);
+         else if(signal=="unit_jump") u= x>0 ? 1:0;
+         else if(signal=="rectangular_wave")
+         {
+                  int l=x/P;
+                  u = x-l*P<=P/2 ? 1: -1 ;
+          }
+         y = func(u);
          tx = ZoomX(x);
          ty = ZoomY(y);
          canv->LineTo(tx,ty);
      }
 }
 //---------------------------------------------------------------------------
+
+
+
+
+
+
 
 
 
