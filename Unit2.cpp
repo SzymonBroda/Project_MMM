@@ -31,12 +31,63 @@ int TForm2::ZoomY(double y)
      return ret+2;
 }
 
-double TForm2::func(double x)
+//------------------------------------------------------------
+double TForm2::func(double x)//zwraca wartosc y (czyli x1)
 {
-     double ret;
-     ret = sin(x);
-     return ret;
+
+    double ret;
+    ret = sin(x);
+    return ret;
 }
+
+double TForm2::cf(double x1, double x2, double t, double K[], double L[])//zwraca wartosc y (czyli x1)
+{
+    K[0] = h*f(x2);
+    L[0] = h*g(x1, x2, t);
+
+    K[1] = h*f(x2+L[0]/2.0);
+    L[1] = h*g(x1+K[0]/2.0, x2+L[0]/2.0, t+h/2.0);
+
+    K[2] = h*f(x2+L[1]/2.0);
+    L[2] = h*g(x1+K[1]/2.0, x2+L[1]/2.0, t+h/2.0);
+
+    K[3] = h*f(x2+L[2]);
+    L[3] = h*g(x1+K[2], x2+L[2], t+h);
+
+    return 0;
+}
+
+double f(double x2)
+{
+    return x2;
+}
+
+double g(double x1, double x2, double t)
+{
+    double u = 1;//!!!!!!!! wejcie dla danego t - wywolanie funkcji
+    return 1.0/T*(n_lin(x1, u) - x2);
+
+}
+
+double n_lin(double x1, double u)//nieliniowosc
+{
+    if(u-x1 >= alpha)//gdyby alpha==0 (przekaznik) to gdy u-x1==0 zwrocimy A
+    {
+        return A;
+    }
+    else if(u-x1 <= -alpha)
+    {
+        return -A;
+    }
+    else
+    {
+        return A/alpha*(u-x1);
+
+    }
+
+}
+
+//------------------------------------------------------------
 
 void __fastcall TForm2::FormActivate(TObject *Sender)
 {
