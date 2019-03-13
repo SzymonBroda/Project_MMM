@@ -1,10 +1,12 @@
 object Form2: TForm2
-  Left = 187
-  Top = 91
+  Left = 271
+  Top = 356
+  Cursor = crCross
+  AutoSize = True
   BorderStyle = bsToolWindow
   Caption = 'Graph'
-  ClientHeight = 306
-  ClientWidth = 1083
+  ClientHeight = 200
+  ClientWidth = 1000
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -19,9 +21,54 @@ object Form2: TForm2
   object Image1: TImage
     Left = 0
     Top = 0
-    Width = 1081
-    Height = 305
+    Width = 1000
+    Height = 200
     Center = True
     Transparent = True
+    OnMouseMove = Image1MouseMove
+  end
+  object y_pos: TEdit
+    Left = 48
+    Top = 0
+    Width = 49
+    Height = 25
+    TabOrder = 0
+  end
+  object x_pos: TEdit
+    Left = 0
+    Top = 0
+    Width = 49
+    Height = 25
+    TabOrder = 1
+  end
+  object add: TButton
+    Left = 96
+    Top = 0
+    Width = 75
+    Height = 25
+    Caption = 'Add new'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 2
+    OnClick = addClick
+  end
+  object close: TButton
+    Left = 168
+    Top = 0
+    Width = 75
+    Height = 25
+    Caption = 'Close'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 3
+    OnClick = closeClick
   end
 end

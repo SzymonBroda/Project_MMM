@@ -8,24 +8,35 @@
 #include <StdCtrls.hpp>
 #include <Forms.hpp>
 #include <ExtCtrls.hpp>
+#include "PERFGRAP.h"
 //---------------------------------------------------------------------------
 class TForm2 : public TForm
 {
 __published:	// IDE-managed Components
         TImage *Image1;
+        TEdit *y_pos;
+        TEdit *x_pos;
+        TButton *add;
+        TButton *close;
         void __fastcall FormActivate(TObject *Sender);
+        void __fastcall Image1MouseMove(TObject *Sender, TShiftState Shift,
+          int X, int Y);
+        void __fastcall addClick(TObject *Sender);
 private: // User declarations
      int xx1, xx2, yy1, yy2;
 
 public:       // User declarations
      __fastcall TForm2(TComponent* Owner);
      double x1, x2, y1, y2;
+     double T,alpha,A;
      AnsiString signal;
      double P; // Period 
      int n;
      int ZoomX(double x);
      int ZoomY(double y);
      double func(double x);
+     double signal_type(double x);
+     TForm2 *wi;
 };
 //---------------------------------------------------------------------------
 extern PACKAGE TForm2 *Form2;
