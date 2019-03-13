@@ -42,8 +42,6 @@ __published:	// IDE-managed Components
         void __fastcall T_Change(TObject *Sender);
         void __fastcall A_Change(TObject *Sender);
         void __fastcall S1Click(TObject *Sender);
-        void __fastcall FormActivate(TObject *Sender);
-        void __fastcall FormDeactivate(TObject *Sender);
         void __fastcall S3Click(TObject *Sender);
         void __fastcall S2Click(TObject *Sender);
         void __fastcall f_SScroll(TObject *Sender, TScrollCode ScrollCode,

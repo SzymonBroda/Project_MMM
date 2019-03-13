@@ -101,7 +101,7 @@ if(A_->Text !="")
             A=0;
             A_->Text="";
          }
-         A_S->Position=alpha;
+         A_S->Position=A;
          }
          catch(...)
         {
@@ -111,16 +111,26 @@ if(A_->Text !="")
 }
 //---------------------------------------------------------------------------
 
+<<<<<<< HEAD
 //--------------------------------------------------------------------------
+=======
+//---------------------------------------------------------------------------
+
+>>>>>>> master
 void __fastcall TForm1::S1Click(TObject *Sender)
 {
-     Form2->signal="unit_jump";
-     Form2->n = 10;
-     Form2->x1 = 0;
-     Form2->x2 = 5;
-     Form2->y1 = -2;
-     Form2->y2 = 2;
-     Form2->ShowModal();
+        TForm2 *form= new TForm2(this);
+     form->signal="unit_jump";
+     form->n = 10;
+     form->x1 = 0;
+     form->x2 = 5;
+     form->y1 = -2;
+     form->y2 = 2;
+     form->alpha = alpha;
+     form->A = A;
+     form->T = T;
+     form->Visible=true;
+     form->created_form = form;
 }
 //---------------------------------------------------------------------------
 
@@ -131,14 +141,19 @@ void __fastcall TForm1::S3Click(TObject *Sender)
          ShowMessage ("Nie podano czêstotliwosci") ;
      else
      {
-        Form2->P=1/f;
-        Form2->signal="sine_wave";
-        Form2->n = 10;
-        Form2->x1 = 0;
-        Form2->x2 = 5;
-        Form2->y1 = -2;
-        Form2->y2 = 2;
-        Form2->ShowModal();
+     TForm2 *form= new TForm2(this) ;
+     form->P=1/f;
+     form->signal="sine_wave";
+     form->n = 10;
+     form->x1 = 0;
+     form->x2 = 5;
+     form->y1 = -2;
+     form->y2 = 2;
+     form->alpha = alpha;
+     form->A = A;
+     form->T = T;
+     form->Visible=true;
+     form->created_form = form;
      }
 }
 //---------------------------------------------------------------------------
@@ -149,14 +164,19 @@ void __fastcall TForm1::S2Click(TObject *Sender)
          ShowMessage ("Nie podano czêstotliwosci") ;
      else
      {
-        Form2->P=1/f;
-        Form2->signal="rectangular_wave";
-        Form2->n = 10;
-        Form2->x1 = 0;
-        Form2->x2 = 5;
-        Form2->y1 = -2;
-        Form2->y2 = 2;
-        Form2->ShowModal();
+         TForm2 *form= new TForm2(this) ;
+         form->P=1/f;
+         form->signal="rectangular_wave";
+         form->n = 10;
+         form->x1 = 0;
+         form->x2 = 5;
+         form->y1 = -2;
+         form->y2 = 2;
+         form->alpha = alpha;
+         form->A = A;
+         form->T = T;
+         form->Visible=true;
+         form->created_form = form;
      }
 }
 //---------------------------------------------------------------------------
@@ -168,6 +188,7 @@ void __fastcall TForm1::f_SScroll(TObject *Sender, TScrollCode ScrollCode,
 }
 //---------------------------------------------------------------------------
 
+<<<<<<< HEAD
 void __fastcall TForm1::FormActivate(TObject *Sender)
 {
 ShowMessage("Our form is activated");
@@ -179,6 +200,9 @@ void __fastcall TForm1::FormDeactivate(TObject *Sender)
         ShowMessage("Our form is deactivated");
 }
 //---------------------------------------------------------------------------
+=======
+
+>>>>>>> master
 
 void __fastcall TForm1::f_Change(TObject *Sender)
 {
@@ -202,6 +226,9 @@ void __fastcall TForm1::f_Change(TObject *Sender)
   }
 }
 //---------------------------------------------------------------------------
+
+
+
 
 
 

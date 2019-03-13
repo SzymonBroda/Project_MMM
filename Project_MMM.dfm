@@ -10,9 +10,7 @@ object Form1: TForm1
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
-  OldCreateOrder = False
-  OnActivate = FormActivate
-  OnDeactivate = FormDeactivate
+  OldCreateOrder = True
   PixelsPerInch = 96
   TextHeight = 13
   object alpha_T: TLabel
