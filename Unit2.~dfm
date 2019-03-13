@@ -28,22 +28,22 @@ object Form2: TForm2
     OnMouseMove = Image1MouseMove
   end
   object y_pos: TEdit
-    Left = 64
-    Top = 8
-    Width = 57
+    Left = 48
+    Top = 0
+    Width = 49
     Height = 21
     TabOrder = 0
   end
   object x_pos: TEdit
-    Left = 8
-    Top = 8
-    Width = 57
+    Left = 0
+    Top = 0
+    Width = 49
     Height = 21
     TabOrder = 1
   end
   object add: TButton
-    Left = 120
-    Top = 8
+    Left = 96
+    Top = 0
     Width = 75
     Height = 25
     Caption = 'Add new'
@@ -57,8 +57,8 @@ object Form2: TForm2
     OnClick = addClick
   end
   object close: TButton
-    Left = 192
-    Top = 8
+    Left = 168
+    Top = 0
     Width = 75
     Height = 25
     Caption = 'Close'

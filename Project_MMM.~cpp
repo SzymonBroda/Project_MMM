@@ -123,6 +123,9 @@ void __fastcall TForm1::S1Click(TObject *Sender)
      form->x2 = 5;
      form->y1 = -2;
      form->y2 = 2;
+     form->alpha = alpha;
+     form->A = A;
+     form->T = T;
      form->Visible=true;
      form->created_form = form;
 }
@@ -143,6 +146,9 @@ void __fastcall TForm1::S3Click(TObject *Sender)
      form->x2 = 5;
      form->y1 = -2;
      form->y2 = 2;
+     form->alpha = alpha;
+     form->A = A;
+     form->T = T;
      form->Visible=true;
      form->created_form = form;
      }
@@ -163,6 +169,9 @@ void __fastcall TForm1::S2Click(TObject *Sender)
          form->x2 = 5;
          form->y1 = -2;
          form->y2 = 2;
+         form->alpha = alpha;
+         form->A = A;
+         form->T = T;
          form->Visible=true;
          form->created_form = form;
      }
@@ -200,6 +209,7 @@ void __fastcall TForm1::f_Change(TObject *Sender)
   }
 }
 //---------------------------------------------------------------------------
+
 
 
 
