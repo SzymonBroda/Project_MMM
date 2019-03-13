@@ -1,12 +1,4 @@
 object Form2: TForm2
-<<<<<<< HEAD
-  Left = 187
-  Top = 91
-  BorderStyle = bsToolWindow
-  Caption = 'Graph'
-  ClientHeight = 306
-  ClientWidth = 1083
-=======
   Left = 271
   Top = 356
   Cursor = crCross
@@ -15,7 +7,6 @@ object Form2: TForm2
   Caption = 'Graph'
   ClientHeight = 200
   ClientWidth = 1000
->>>>>>> master
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -30,13 +21,8 @@ object Form2: TForm2
   object Image1: TImage
     Left = 0
     Top = 0
-<<<<<<< HEAD
-    Width = 1081
-    Height = 305
-=======
     Width = 1000
     Height = 200
->>>>>>> master
     Center = True
     Transparent = True
     OnMouseMove = Image1MouseMove

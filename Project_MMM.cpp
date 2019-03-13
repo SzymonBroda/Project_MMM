@@ -111,12 +111,6 @@ if(A_->Text !="")
 }
 //---------------------------------------------------------------------------
 
-<<<<<<< HEAD
-//--------------------------------------------------------------------------
-=======
-//---------------------------------------------------------------------------
-
->>>>>>> master
 void __fastcall TForm1::S1Click(TObject *Sender)
 {
         TForm2 *form= new TForm2(this);
@@ -186,23 +180,8 @@ void __fastcall TForm1::f_SScroll(TObject *Sender, TScrollCode ScrollCode,
 {
            f_->Text=f_S->Position;
 }
-//---------------------------------------------------------------------------
 
-<<<<<<< HEAD
-void __fastcall TForm1::FormActivate(TObject *Sender)
-{
-ShowMessage("Our form is activated");
-}
 //---------------------------------------------------------------------------
-
-void __fastcall TForm1::FormDeactivate(TObject *Sender)
-{
-        ShowMessage("Our form is deactivated");
-}
-//---------------------------------------------------------------------------
-=======
-
->>>>>>> master
 
 void __fastcall TForm1::f_Change(TObject *Sender)
 {

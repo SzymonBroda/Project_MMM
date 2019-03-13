@@ -12,7 +12,8 @@
 #pragma resource "*.dfm"
 TForm2 *Form2;
 const double h=0.001;
-double T,alpha,A;
+double A,alpha,T;
+
 double n_lin(double x1, double u);
 //---------------------------------------------------------------------------
 __fastcall TForm2::TForm2(TComponent* Owner)
@@ -25,14 +26,14 @@ __fastcall TForm2::TForm2(TComponent* Owner)
 {
      int ret;
      ret = xx1 + (int)((x-x1)*(xx2-xx1)/(x2-x1));
-     return ret+2;
+     return ret;
 }
 
 int TForm2::ZoomY(double y)
 {
      int ret;
      ret = yy2 + (int)((y-y1)*(yy1-yy2)/(y2-y1));
-     return ret+2;
+     return ret;
 }
 
 //------------------------------------------------------------
@@ -43,8 +44,6 @@ double TForm2::func(double x)//zwraca wartosc y (czyli x1)
      return ret;
 }
 
-<<<<<<< HEAD
-=======
 double TForm2::cf(double x1, double x2, double t, double K[], double L[])//zwraca wartosc y (czyli x1)
 {
     K[0] = h*f(x2);
@@ -105,17 +104,12 @@ double n_lin(double x1, double u)//nieliniowosc
 
 //------------------------------------------------------------
 
->>>>>>> master
 void __fastcall TForm2::FormActivate(TObject *Sender)
 {
           TCanvas * canv; // additional variable
      int tx, ty;
      int i;
      double x, y, u ;
-<<<<<<< HEAD
-     const double h=0.001;
-=======
->>>>>>> master
 
      canv = Image1->Canvas;
 
@@ -159,17 +153,7 @@ void __fastcall TForm2::FormActivate(TObject *Sender)
 
      // coordinates of the first point
      x = x1;
-<<<<<<< HEAD
-     if(signal=="sine_wave") u=sin(x);
-     else if(signal=="unit_jump") u= x>0 ? 1:0;
-     else if(signal=="rectangular_wave")
-     {
-           int l=x/P;
-           u = x-l*P<=P/2 ? 1: -1 ;
-     }
-=======
      u=signal_type(x);
->>>>>>> master
      y = func(u);
      tx = ZoomX(x);
      ty = ZoomY(y);
@@ -179,17 +163,7 @@ void __fastcall TForm2::FormActivate(TObject *Sender)
      for (int i = 0; i < n/h ; i++)
      {
          x = x + h;
-<<<<<<< HEAD
-         if(signal=="sine_wave") u=sin(x/P);
-         else if(signal=="unit_jump") u= x>0 ? 1:0;
-         else if(signal=="rectangular_wave")
-         {
-                  int l=x/P;
-                  u = x-l*P<=P/2 ? 1: -1 ;
-          }
-=======
          u=signal_type(x);
->>>>>>> master
          y = func(u);
          tx = ZoomX(x);
          ty = ZoomY(y);
@@ -226,8 +200,6 @@ void __fastcall TForm2::closeClick(TObject *Sender)
         created_form->Close();
 }
 //---------------------------------------------------------------------------
-
-
 
 
 

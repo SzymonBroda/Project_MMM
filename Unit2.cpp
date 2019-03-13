@@ -44,8 +44,6 @@ double TForm2::func(double x)//zwraca wartosc y (czyli x1)
      return ret;
 }
 
-<<<<<<< HEAD
-=======
 double TForm2::cf(double x1, double x2, double t, double K[], double L[])//zwraca wartosc y (czyli x1)
 {
     K[0] = h*f(x2);
@@ -106,7 +104,6 @@ double n_lin(double x1, double u)//nieliniowosc
 
 //------------------------------------------------------------
 
->>>>>>> master
 void __fastcall TForm2::FormActivate(TObject *Sender)
 {
           TCanvas * canv; // additional variable
@@ -185,26 +182,16 @@ void __fastcall TForm2::Image1MouseMove(TObject *Sender, TShiftState Shift,
 }
 //---------------------------------------------------------------------------
 
-
 void __fastcall TForm2::addClick(TObject *Sender)
 {
         Form1->Show();
 }
 //---------------------------------------------------------------------------
 
-
-
-
-
-
-
 void __fastcall TForm2::closeClick(TObject *Sender)
 {
         created_form->Close();
 }
 //---------------------------------------------------------------------------
-
-
-
 
 
