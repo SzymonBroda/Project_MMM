@@ -189,18 +189,10 @@ void __fastcall TForm2::addClick(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-
-
-
-
-
-
 void __fastcall TForm2::closeClick(TObject *Sender)
 {
         created_form->Close();
 }
 //---------------------------------------------------------------------------
-
-
 
 
