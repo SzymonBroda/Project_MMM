@@ -41,18 +41,22 @@ public:       // User declarations
      double func(double x);//wartosc y w danym momencie
 
      double cf(double x1, double x2, double t, double K[], double L[]);//wartosci wpolczynnikow do metody rungego-kuty
-
-     double f(double x2);// funkcje po prawej stronie ukladu row. roz.
-     double g(double x1, double x2, double t);//
+																		//K i L
+     double f(double x2);// funkcje po prawej stronie ukladu row. roz. (row 1)
+     double g(double x1, double x2, double t);// (rownanie 2)
 
      double n_lin(double x1, double u);//nieliniowosc
      //
      //
      // x1' = x2
      // x2' = nie_lin(u-x1)/T - x2/T
-     //
+     //		  1/T*(nie_lin(u-x1))
      // x1' = f(x1, x2, t)
-     // x2' = nie_lin(u-x1)/T - x2/T
+     // x2' = g(x1, x2, t)
+     //		  
+     //
+     // f = x2
+     // g = nie_lin(u-x1)/T - x2/T
      //
 };
 //---------------------------------------------------------------------------

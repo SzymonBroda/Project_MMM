@@ -37,11 +37,21 @@ int TForm2::ZoomY(double y)
 }
 
 //------------------------------------------------------------
-double TForm2::func(double x)//zwraca wartosc y (czyli x1)
+double TForm2::func(double y, double t)//zwraca wartosc y (czyli x1)
 {
-     double ret;
-     ret = x;      ///// tutaj funkcja
-     return ret;
+     ///// oblicznie wartosci y[n]
+     double K[3], L[3];//zamiana 3 na sta³e ##
+	 //x1[n+1] = x1[n] + 1.0/6.0 * (K1 + 2K2 + 2K3 + K4) 
+	 //x2[n+1] = x2[n] + 1.0/6.0 * (L1 + 2L2 + 2L3 + L4)
+	 
+	 static double x_1;
+	 static double x_2;
+	 
+	 cf(x_1, x_2, t, K, L);
+	 x_1 += 1.0/6.0 * (K[0] + 2*K[1] + 2*K[2] + K[3])
+	 x_2 += 1.0/6.0 * (L[0] + 2*L[1] + 2*L[2] + L[3])
+	 	       
+     return x_1;
 }
 
 double TForm2::cf(double x1, double x2, double t, double K[], double L[])//zwraca wartosc y (czyli x1)
@@ -61,14 +71,14 @@ double TForm2::cf(double x1, double x2, double t, double K[], double L[])//zwrac
     return 0;
 }
 
-double f(double x2)
+double TForm2::f(double x2)
 {
     return x2;
 }
 
-double g(double x1, double x2, double t)
+double TForm2::g(double x1, double x2, double t)
 {
-    double u = 1;//!!!!!!!! wejcie dla danego t - wywolanie funkcji
+    double u = signal_type(t);//!!!!!!!! wejcie dla danego t - wywolanie funkcji
     return 1.0/T*(n_lin(x1, u) - x2);
 
 }
@@ -84,10 +94,10 @@ double TForm2::signal_type(double x)
  return 0;
 }
 
-double n_lin(double x1, double u)//nieliniowosc
+double TForm2::n_lin(double x1, double u)//nieliniowosc
 {
     if(u-x1 >= alpha)//gdyby alpha==0 (przekaznik) to gdy u-x1==0 zwrocimy A
-    {
+    {				//sprawdzic jak jest dla wejscia!!! (by bylo tak samo)
         return A;
     }
     else if(u-x1 <= -alpha)
@@ -96,7 +106,7 @@ double n_lin(double x1, double u)//nieliniowosc
     }
     else
     {
-        return A/alpha*(u-x1);
+        return A/alpha*(u-x1);//A/alpha - nachylenie
 
     }
 
