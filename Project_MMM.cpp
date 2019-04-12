@@ -270,7 +270,8 @@ double TForm1::func(double t,double x_1[], double x_2[])//zwraca wartosc y (czyl
      return x_1[0];
 }
 
-double TForm1::cf(double x1, double x2, double t, double K[], double L[])//zwraca wartosc y (czyli x1)
+//wspolczynniki do metody Rungego-Kuty
+double TForm1::cf(double x1, double x2, double t, double K[], double L[])
 {
     K[0] = h*f1(x2);
     L[0] = h*g(x1, x2, t);
@@ -294,8 +295,12 @@ double TForm1::f1(double x_2)
 
 double TForm1::g(double x_1, double x_2, double t)
 {
-    double u = signal_type(t);
-    return 1.0/T*(n_lin(x_1, u) - x2);
+    double u = signal_type(t);//syganl wejsciowy
+    
+    if(T == 0)//stala czasowa rowna 0 - uklad pierwszego rzedu
+    	return n_lin(x_1, u);
+	else
+    	return 1.0/T*(n_lin(x_1, u) - x_2);
 }
 
 double TForm1::signal_type(double t)
@@ -311,19 +316,19 @@ double TForm1::signal_type(double t)
  return 0;
 }
 
-double TForm1::n_lin(double x1, double u)//nieliniowosc
+double TForm1::n_lin(double x_1, double u)//nieliniowosc
 {
-    if(u-x1 >= alpha)//gdyby alpha==0 (przekaznik) to gdy u-x1==0 zwrocimy A
+    if(u-x_1 >= alpha)//gdyby alpha==0 (przekaznik) to gdy u-x1==0 zwrocimy A
     {
         return A;
     }
-    else if(u-x1 <= -alpha)
+    else if(u-x_1 <= -alpha)
     {
         return -A;
     }
     else
     {
-        return A/alpha*(u-x1);
+        return A/alpha*(u-x_1);
 
     }
 
