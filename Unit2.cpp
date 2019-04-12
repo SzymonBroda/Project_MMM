@@ -12,9 +12,7 @@
 #pragma resource "*.dfm"
 TForm2 *Form2;
 const double h=0.001;
-double A,alpha,T;
 
-double n_lin(double x1, double u);
 //---------------------------------------------------------------------------
 __fastcall TForm2::TForm2(TComponent* Owner)
         : TForm(Owner)
@@ -37,79 +35,13 @@ int TForm2::ZoomY(double y)
 }
 
 //------------------------------------------------------------
-double TForm2::func(double x)//zwraca wartosc y (czyli x1)
-{
-     double ret;
-     ret = x;      ///// tutaj funkcja
-     return ret;
-}
-
-double TForm2::cf(double x1, double x2, double t, double K[], double L[])//zwraca wartosc y (czyli x1)
-{
-    K[0] = h*f(x2);
-    L[0] = h*g(x1, x2, t);
-
-    K[1] = h*f(x2+L[0]/2.0);
-    L[1] = h*g(x1+K[0]/2.0, x2+L[0]/2.0, t+h/2.0);
-
-    K[2] = h*f(x2+L[1]/2.0);
-    L[2] = h*g(x1+K[1]/2.0, x2+L[1]/2.0, t+h/2.0);
-
-    K[3] = h*f(x2+L[2]);
-    L[3] = h*g(x1+K[2], x2+L[2], t+h);
-
-    return 0;
-}
-
-double f(double x2)
-{
-    return x2;
-}
-
-double g(double x1, double x2, double t)
-{
-    double u = 1;//!!!!!!!! wejcie dla danego t - wywolanie funkcji
-    return 1.0/T*(n_lin(x1, u) - x2);
-
-}
-double TForm2::signal_type(double x)
-{
-    if(signal=="sine_wave") return sin(x);
-     else if(signal=="unit_jump") return x>0 ? 1:0;
-     else if(signal=="rectangular_wave")
-     {
-           int l=x/P;
-           return x-l*P<=P/2 ? 1: -1 ;
-     }
- return 0;
-}
-
-double n_lin(double x1, double u)//nieliniowosc
-{
-    if(u-x1 >= alpha)//gdyby alpha==0 (przekaznik) to gdy u-x1==0 zwrocimy A
-    {
-        return A;
-    }
-    else if(u-x1 <= -alpha)
-    {
-        return -A;
-    }
-    else
-    {
-        return A/alpha*(u-x1);
-
-    }
-
-}
-
-//------------------------------------------------------------
 
 void __fastcall TForm2::FormActivate(TObject *Sender)
 {
           TCanvas * canv; // additional variable
      int tx, ty;
      int i;
-     double x, y, u ;
+     double x ;
 
      canv = Image1->Canvas;
 
@@ -153,20 +85,16 @@ void __fastcall TForm2::FormActivate(TObject *Sender)
 
      // coordinates of the first point
      x = x1;
-     u=signal_type(x);
-     y = func(u);
      tx = ZoomX(x);
-     ty = ZoomY(y);
+     ty = ZoomY(vec_y[0]);
      canv->MoveTo(tx,ty);
 
      // The cycle of enumerating of points and drawing the connecting lines
      for (int i = 0; i < n/h ; i++)
      {
          x = x + h;
-         u=signal_type(x);
-         y = func(u);
          tx = ZoomX(x);
-         ty = ZoomY(y);
+         ty = ZoomY(vec_y[i+1]);
          canv->LineTo(tx,ty);
      }
 }
@@ -193,5 +121,11 @@ void __fastcall TForm2::closeClick(TObject *Sender)
         created_form->Close();
 }
 //---------------------------------------------------------------------------
+
+
+
+
+
+
 
 

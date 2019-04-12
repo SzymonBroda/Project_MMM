@@ -1,6 +1,6 @@
 object Form2: TForm2
-  Left = 271
-  Top = 356
+  Left = 296
+  Top = 457
   Cursor = crCross
   AutoSize = True
   BorderStyle = bsToolWindow
