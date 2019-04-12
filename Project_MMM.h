@@ -12,7 +12,7 @@
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
 {
-__published:	// IDE-managed Components
+__published:	
         TLabel *alpha_T;
         TLabel *A_T;
         TLabel *T_T;
@@ -58,25 +58,25 @@ __published:	// IDE-managed Components
         void __fastcall alpha_pChange(TObject *Sender);
         void __fastcall T_pChange(TObject *Sender);
         
-private:	// User declarations
-public:		// User declarations
+public:		
      __fastcall TForm1(TComponent* Owner);
-     double func(double x,double x_1[],double x_2[]);//wartosc y w danym momencie
+     
+     double func(double x,double x_1[],double x_2[]);//wartosc y w danej cwili czasu
 
-     double cf(double x1, double x2, double t, double K[], double L[]);//wartosci wpolczynnikow do metody rungego-kuty
+     double cf(double x_1, double x_2, double t, double K[], double L[]);//wartosci wpolczynnikow do metody Rungego-Kuty
 
-     double f1(double x2);// funkcje po prawej stronie ukladu row. roz.
-     double g(double x1, double x2, double t);//
-     double signal_type(double x);
-     double n_lin(double x1, double u);//nieliniowosc
-     //
-     //
-     // x1' = x2
-     // x2' = nie_lin(u-x1)/T - x2/T
-     //
+     double f1(double x_2);// funkcje po prawej stronie ukladu row. roz.
+     double g(double x_1, double x_2, double t);
+     
+     double signal_type(double t);//syganl wejsciowy
+     double n_lin(double x_1, double u);//nieliniowosc
+
      // x1' = f(x1, x2, t)
-     // x2' = nie_lin(u-x1)/T - x2/T
-     //
+     // x2' = g(x1, x2, t)
+     //		  
+     // f = x2
+     // g = nie_lin(u-x1)/T - x2/T
+
 };
 //---------------------------------------------------------------------------
 extern PACKAGE TForm1 *Form1;

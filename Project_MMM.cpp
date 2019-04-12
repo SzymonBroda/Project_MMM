@@ -1,4 +1,4 @@
-//---------------------------------------------------------------------------
+
 #include <vector>
 #include <vcl.h>
 #include <math.h>
@@ -6,13 +6,18 @@
 
 #include "Project_MMM.h"
 #include "Unit2.h"
-//---------------------------------------------------------------------------
+
 #pragma package(smart_init)
 #pragma link "PERFGRAP"
 #pragma resource "*.dfm"
 TForm1 *Form1;
-        double T=1,alpha=1,A=1,f=1,P;
-        double alpha_max=100,alpha_min=0,T_max=100,T_min=0.001,A_max=100,A_min=0,f_max=100,f_min=1;
+        double T = 1,     		 		//stala czasowa	    	
+			   alpha=1, A=1,          	//parametry elementu nieliniowego		
+			   f=1, P;                  //czestotliwosc przebiegu wejciowego
+        double alpha_max=100, alpha_min=0, 
+			   T_max=100,T_min=0.001,
+			   A_max=100,A_min=0,
+			   f_max=100,f_min=1;
         AnsiString a;
         const double h=0.001, n=10;
         AnsiString signal;
@@ -21,20 +26,20 @@ __fastcall TForm1::TForm1(TComponent* Owner)
         : TForm(Owner)
 {
 }
-//---------------------------------------------------------------------------
+
 void __fastcall TForm1::alpha_SScroll(TObject *Sender,
       TScrollCode ScrollCode, int &ScrollPos)
 {
         alpha_->Text=alpha_S->Position;
 }
-//---------------------------------------------------------------------------
+
 
 void __fastcall TForm1::A_SScroll(TObject *Sender, TScrollCode ScrollCode,
       int &ScrollPos)
 {
         A_->Text=A_S->Position;
 }
-//---------------------------------------------------------------------------
+
 
 void __fastcall TForm1::T_SScroll(TObject *Sender, TScrollCode ScrollCode,
       int &ScrollPos)
@@ -68,7 +73,7 @@ void __fastcall TForm1::alpha_Change(TObject *Sender)
   else
   alpha_->Text="0";
 }
-//---------------------------------------------------------------------------
+
 
 void __fastcall TForm1::T_Change(TObject *Sender)
 {
@@ -94,7 +99,7 @@ void __fastcall TForm1::T_Change(TObject *Sender)
        }
        else T_->Text="1";
 }
-//---------------------------------------------------------------------------
+
 
 void __fastcall TForm1::A_Change(TObject *Sender)
 {
@@ -123,22 +128,23 @@ void __fastcall TForm1::A_Change(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
+
 void __fastcall TForm1::S1Click(TObject *Sender)
 {
          signal="unit_jump";
          double x_1[2];//zmienne stanu
          double x_2[2];
-         for(int i = 0; i < 2; i++)//warunki poczatkowe
+         for(int i = 0; i < 2; i++)//warunki poczatkowe - zerowe
          {
                  x_1[i] = 0;
                 x_2[i] = 0;
          }
-         double x=0;
-         std::vector <double> vec_y;
+         double t=0;
+         std::vector <double> vec_y;//wektor wyjsc w kolejnych chwilach czasu
          for (int i = 0; i < n/h ; i++)
          {
-                x = x + h;
-                vec_y.push_back(func(x,x_1,x_2)) ;
+                t = t + h;
+                vec_y.push_back(func(t, x_1, x_2));//obliczanie wartosci wyjscia
          }
          TForm2 *form= new TForm2(this) ;
          form->vec_y = vec_y;
@@ -150,7 +156,7 @@ void __fastcall TForm1::S1Click(TObject *Sender)
          form->Visible=true;
          form->created_form = form;
 }
-//---------------------------------------------------------------------------
+
 
 void __fastcall TForm1::S3Click(TObject *Sender)
 {
@@ -166,14 +172,14 @@ void __fastcall TForm1::S3Click(TObject *Sender)
                  x_1[i] = 0;
                  x_2[i] = 0;
          }
-         double x=0;
-         std::vector <double> vec_y;
+         double t=0;
+         std::vector <double> vec_y; //wektor wyjsc w kolejnych chwilach czasu
          for (int i = 0; i < n/h ; i++)
          {
-                  x = x + h;
-                  vec_y.push_back(func(x,x_1,x_2));
+                  t = t + h;
+                  vec_y.push_back(func(t, x_1, x_2));
          }
-         TForm2 *form= new TForm2(this) ;
+         TForm2 *form= new TForm2(this);
          form->vec_y = vec_y;
          form->n = 10;
          form->x1 = 0;
@@ -184,7 +190,7 @@ void __fastcall TForm1::S3Click(TObject *Sender)
          form->created_form = form;
      }
 }
-//---------------------------------------------------------------------------
+
 
 void __fastcall TForm1::S2Click(TObject *Sender)
 {
@@ -200,12 +206,12 @@ void __fastcall TForm1::S2Click(TObject *Sender)
                  x_1[i] = 0;
                  x_2[i] = 0;
          }
-         double x=0;
+         double t=0;
          std::vector <double> vec_y;
          for (int i = 0; i < n/h ; i++)
          {
-                 x = x + h;
-                 vec_y.push_back(func(x,x_1,x_2));
+                 t = t + h;
+                 vec_y.push_back(func(t, x_1, x_2));
          }
          TForm2 *form= new TForm2(this) ;
          form->vec_y = vec_y;
@@ -226,7 +232,6 @@ void __fastcall TForm1::f_SScroll(TObject *Sender, TScrollCode ScrollCode,
            f_->Text=f_S->Position;
 }
 
-//---------------------------------------------------------------------------
 
 void __fastcall TForm1::f_Change(TObject *Sender)
 {
@@ -251,13 +256,15 @@ void __fastcall TForm1::f_Change(TObject *Sender)
      }
      else f_->Text="1";
 }
-double TForm1::func(double x,double x_1[], double x_2[])//zwraca wartosc y (czyli x1)
+
+//---------------------------------------------------------------------------
+
+double TForm1::func(double t,double x_1[], double x_2[])//zwraca wartosc y (czyli x1)
 {
      double K[4], L[4];//zamiana 4 na sta³e ##
-	 //x1[n+1] = x1[n] + 1.0/6.0 * (K1 + 2K2 + 2K3 + K4)
-	 //x2[n+1] = x2[n] + 1.0/6.0 * (L1 + 2L2 + 2L3 + L4)
+	 
 
-     cf(x_1[0], x_2[0], x, K, L);
+     cf(x_1[0], x_2[0], t, K, L);
      x_1[0] += 1.0/6.0 * (K[0] + 2*K[1] + 2*K[2] + K[3]) ;
      x_2[0] += 1.0/6.0 * (L[0] + 2*L[1] + 2*L[2] + L[3])  ;
      return x_1[0];
@@ -280,26 +287,26 @@ double TForm1::cf(double x1, double x2, double t, double K[], double L[])//zwrac
     return 0;
 }
 
-double TForm1::f1(double x2)
+double TForm1::f1(double x_2)
 {
-    return x2;
+    return x_2;
 }
 
-double TForm1::g(double x1, double x2, double t)
+double TForm1::g(double x_1, double x_2, double t)
 {
-    double u = signal_type(t);//!!!!!!!! wejcie dla danego t - wywolanie funkcji
-    return 1.0/T*(n_lin(x1, u) - x2);
+    double u = signal_type(t);
+    return 1.0/T*(n_lin(x_1, u) - x2);
 }
 
-double TForm1::signal_type(double x)
+double TForm1::signal_type(double t)
 {
-     if(signal=="sine_wave") return sin(x*f);
-     else if(signal=="unit_jump") return x>0 ? 1:0;
+     if(signal=="sine_wave") return sin(t*f);
+     else if(signal=="unit_jump") return t>0 ? 1:0;
      else if(signal=="rectangular_wave")
      {
-           P=1/f;
-           int l=x/P;
-           return x-l*P<=P/2 ? 1: -1 ;
+           P = 1/f;
+           int l = t/P;
+           return t - l*P <= P/2 ? 1: -1 ;
      }
  return 0;
 }
@@ -346,8 +353,6 @@ void __fastcall TForm1::A_pChange(TObject *Sender)
         }
         else A_p->Text="000";
 }
-//---------------------------------------------------------------------------
-
 
 void __fastcall TForm1::alpha_pChange(TObject *Sender)
 {
@@ -372,7 +377,6 @@ if(alpha_p->Text !="")
   }
   else  alpha_p->Text="000";
 }
-//---------------------------------------------------------------------------
 
 void __fastcall TForm1::T_pChange(TObject *Sender)
 {
