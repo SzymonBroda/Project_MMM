@@ -35,83 +35,6 @@ int TForm2::ZoomY(double y)
 }
 
 //------------------------------------------------------------
-<<<<<<< HEAD
-double TForm2::func(double t, double x_1[], double x_2[])//zwraca wartosc y (czyli x1)
-{
-     ///// oblicznie wartosci y[n]
-     double K[3], L[3];//zamiana 3 na sta³e ##
-	 //x1[n+1] = x1[n] + 1.0/6.0 * (K1 + 2K2 + 2K3 + K4) 
-	 //x2[n+1] = x2[n] + 1.0/6.0 * (L1 + 2L2 + 2L3 + L4)
-	 
-
-	 cf(x_1[0], x_2[0], t, K, L);
-	 x_1[0] += 1.0/6.0 * (K[0] + 2*K[1] + 2*K[2] + K[3]) ;
-	 x_2[0] += 1.0/6.0 * (L[0] + 2*L[1] + 2*L[2] + L[3])  ;
-	 	       
-     return x_1[0];
-}
-
-double TForm2::cf(double x1, double x2, double t, double K[], double L[])//zwraca wartosc y (czyli x1)
-{
-    K[0] = h*f(x2);
-    L[0] = h*g(x1, x2, t);
-
-    K[1] = h*f(x2+L[0]/2.0);
-    L[1] = h*g(x1+K[0]/2.0, x2+L[0]/2.0, t+h/2.0);
-
-    K[2] = h*f(x2+L[1]/2.0);
-    L[2] = h*g(x1+K[1]/2.0, x2+L[1]/2.0, t+h/2.0);
-
-    K[3] = h*f(x2+L[2]);
-    L[3] = h*g(x1+K[2], x2+L[2], t+h);
-
-    return 0;
-}
-
-double TForm2::f(double x2)
-{
-    return x2;
-}
-
-double TForm2::g(double x1, double x2, double t)
-{
-    double u = signal_type(t);//!!!!!!!! wejcie dla danego t - wywolanie funkcji
-    return 1.0/T*(n_lin(x1, u) - x2);
-
-}
-double TForm2::signal_type(double x)
-{
-    if(signal=="sine_wave") return sin(x);
-     else if(signal=="unit_jump") return x>0 ? 1:0;
-     else if(signal=="rectangular_wave")
-     {
-           int l=x/P;
-           return x-l*P<=P/2 ? 1: -1 ;
-     }
- return 0;
-}
-
-double TForm2::n_lin(double x1, double u)//nieliniowosc
-{
-    if(u-x1 >= alpha)//gdyby alpha==0 (przekaznik) to gdy u-x1==0 zwrocimy A
-    {				//sprawdzic jak jest dla wejscia!!! (by bylo tak samo)
-        return A;
-    }
-    else if(u-x1 <= -alpha)
-    {
-        return -A;
-    }
-    else
-    {
-        return A/alpha*(u-x1);//A/alpha - nachylenie
-
-    }
-
-}
-
-//------------------------------------------------------------
-=======
->>>>>>> copy
 
 void __fastcall TForm2::FormActivate(TObject *Sender)
 {
@@ -161,19 +84,7 @@ void __fastcall TForm2::FormActivate(TObject *Sender)
      canv->Pen->Color = clRed; // color
 
      // coordinates of the first point
-     double x_1[2];//zmienne stanu
-	 double x_2[2];
-	 for(int i = 0; i < 2; i++)//warunki poczatkowe
-	 {
-	 	x_1[i] = 0;
-	 	x_2[i] = 0;
-	 }
-	 
      x = x1;
-<<<<<<< HEAD
-     y = func(x, x_1, x_2);
-=======
->>>>>>> copy
      tx = ZoomX(x);
      ty = ZoomY(vec_y[0]);
      canv->MoveTo(tx,ty);
@@ -182,10 +93,6 @@ void __fastcall TForm2::FormActivate(TObject *Sender)
      for (int i = 0; i < n/h ; i++)
      {
          x = x + h;
-<<<<<<< HEAD
-         y = func(x, x_1, x_2);
-=======
->>>>>>> copy
          tx = ZoomX(x);
          ty = ZoomY(vec_y[i+1]);
          canv->LineTo(tx,ty);
@@ -216,12 +123,9 @@ void __fastcall TForm2::closeClick(TObject *Sender)
 //---------------------------------------------------------------------------
 
 
-<<<<<<< HEAD
-=======
 
 
 
 
 
 
->>>>>>> copy

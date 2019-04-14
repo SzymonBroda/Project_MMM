@@ -11,10 +11,6 @@
 #pragma link "PERFGRAP"
 #pragma resource "*.dfm"
 TForm1 *Form1;
-<<<<<<< HEAD
-        double T=1,alpha,A,f=1;
-        double alpha_max=100,alpha_min=0,T_max=100,T_min=0.001,A_max=100,A_min=0,f_max=100,f_min=1;
-=======
         double T = 1,     		 		//stala czasowa	    	
 			   alpha=1, A=1,          	//parametry elementu nieliniowego		
 			   f=1, P;                  //czestotliwosc przebiegu wejciowego
@@ -22,7 +18,6 @@ TForm1 *Form1;
 			   T_max=100,T_min=0.001,
 			   A_max=100,A_min=0,
 			   f_max=100,f_min=1;
->>>>>>> copy
         AnsiString a;
         const double h=0.001, n=10;
         AnsiString signal;
@@ -82,27 +77,6 @@ void __fastcall TForm1::alpha_Change(TObject *Sender)
 
 void __fastcall TForm1::T_Change(TObject *Sender)
 {
-<<<<<<< HEAD
-
-         if(T_->Text !="")
-  {
-         try
-         {
-          T = T_->Text.ToDouble();
-          if (T>T_max || T<T_min)
-         {
-            ShowMessage ("Podana liczba jest spoza zakresu.") ;
-            T=1;
-            T_->Text="1";
-         }
-         T_S->Position=T;
-         }
-         catch(...)
-        {
-         ShowMessage ("Niepoprawne wartoœci. Spróbuj ponownie.");
-        }
-  }
-=======
         if(T_->Text !="")
        {
                 try
@@ -124,7 +98,6 @@ void __fastcall TForm1::T_Change(TObject *Sender)
                }
        }
        else T_->Text="1";
->>>>>>> copy
 }
 
 

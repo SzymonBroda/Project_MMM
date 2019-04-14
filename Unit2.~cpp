@@ -37,35 +37,21 @@ int TForm2::ZoomY(double y)
 }
 
 //------------------------------------------------------------
-<<<<<<< HEAD
-double TForm2::func(double t, double x_1[], double x_2[])//zwraca wartosc y (czyli x1)
-{
-     ///// oblicznie wartosci y[n]
-=======
 double TForm2::func(double x,double x_1[], double x_2[])//zwraca wartosc y (czyli x1)
 {
      double ret;
      ret = x;      ///// tutaj funkcja
       ///// oblicznie wartosci y[n]
->>>>>>> copy
      double K[3], L[3];//zamiana 3 na sta³e ##
 	 //x1[n+1] = x1[n] + 1.0/6.0 * (K1 + 2K2 + 2K3 + K4) 
 	 //x2[n+1] = x2[n] + 1.0/6.0 * (L1 + 2L2 + 2L3 + L4)
 	 
 
-<<<<<<< HEAD
-	 cf(x_1[0], x_2[0], t, K, L);
-	 x_1[0] += 1.0/6.0 * (K[0] + 2*K[1] + 2*K[2] + K[3]) ;
-	 x_2[0] += 1.0/6.0 * (L[0] + 2*L[1] + 2*L[2] + L[3])  ;
-	 	       
-     return x_1[0];
-=======
 	 cf(x_1[0], x_2[0], x, K, L);
 	 x_1[0] += 1.0/6.0 * (K[0] + 2*K[1] + 2*K[2] + K[3]) ;
 	 x_2[0] += 1.0/6.0 * (L[0] + 2*L[1] + 2*L[2] + L[3])  ;
 
      return ret;
->>>>>>> copy
 }
 
 double TForm2::cf(double x1, double x2, double t, double K[], double L[])//zwraca wartosc y (czyli x1)
@@ -92,7 +78,7 @@ double TForm2::f(double x2)
 
 double TForm2::g(double x1, double x2, double t)
 {
-    double u = signal_type(t);//!!!!!!!! wejcie dla danego t - wywolanie funkcji
+    double u = 1;//!!!!!!!! wejcie dla danego t - wywolanie funkcji
     return 1.0/T*(n_lin(x1, u) - x2);
 
 }
@@ -111,7 +97,7 @@ double TForm2::signal_type(double x)
 double TForm2::n_lin(double x1, double u)//nieliniowosc
 {
     if(u-x1 >= alpha)//gdyby alpha==0 (przekaznik) to gdy u-x1==0 zwrocimy A
-    {				//sprawdzic jak jest dla wejscia!!! (by bylo tak samo)
+    {
         return A;
     }
     else if(u-x1 <= -alpha)
@@ -120,7 +106,7 @@ double TForm2::n_lin(double x1, double u)//nieliniowosc
     }
     else
     {
-        return A/alpha*(u-x1);//A/alpha - nachylenie
+        return A/alpha*(u-x1);
 
     }
 
@@ -184,20 +170,8 @@ void __fastcall TForm2::FormActivate(TObject *Sender)
      }
 
      // coordinates of the first point
-     double x_1[2];//zmienne stanu
-	 double x_2[2];
-	 for(int i = 0; i < 2; i++)//warunki poczatkowe
-	 {
-	 	x_1[i] = 0;
-	 	x_2[i] = 0;
-	 }
-	 
      x = x1;
-<<<<<<< HEAD
-     y = func(x, x_1, x_2);
-=======
      y = func(x,x_1,x_2);
->>>>>>> copy
      tx = ZoomX(x);
      ty = ZoomY(y);
      canv->MoveTo(tx,ty);
@@ -206,11 +180,7 @@ void __fastcall TForm2::FormActivate(TObject *Sender)
      for (int i = 0; i < n/h ; i++)
      {
          x = x + h;
-<<<<<<< HEAD
-         y = func(x, x_1, x_2);
-=======
          y = func(x,x_1,x_2);
->>>>>>> copy
          tx = ZoomX(x);
          ty = ZoomY(y);
          canv->LineTo(tx,ty);
@@ -241,10 +211,7 @@ void __fastcall TForm2::closeClick(TObject *Sender)
 //---------------------------------------------------------------------------
 
 
-<<<<<<< HEAD
-=======
 
 
 
 
->>>>>>> copy

@@ -91,24 +91,7 @@ void __fastcall TForm1::T_Change(TObject *Sender)
 
 void __fastcall TForm1::A_Change(TObject *Sender)
 {
-<<<<<<< HEAD
-if(A_->Text !="")
-  {
-         try
-         {
-          A = A_->Text.ToDouble();
-          if (A>A_max || A<A_min)
-         {
-            ShowMessage ("Podana liczba jest spoza zakresu.") ;
-            A=0;
-            A_->Text="";
-         }
-         A_S->Position=A;
-         }
-         catch(...)
-=======
         if(A_->Text !="")
->>>>>>> copy
         {
                 try
                 {
@@ -332,8 +315,6 @@ double TForm1::n_lin(double x1, double u)//nieliniowosc
 
 
 
-<<<<<<< HEAD
-=======
 
 
 
@@ -344,4 +325,3 @@ double TForm1::n_lin(double x1, double u)//nieliniowosc
 
 
 
->>>>>>> copy
