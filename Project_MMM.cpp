@@ -15,7 +15,7 @@ TForm1 *Form1;
 			   alpha=1, A=1,          	//parametry elementu nieliniowego		
 			   f=1, P;                  //czestotliwosc przebiegu wejciowego
         double alpha_max=100, alpha_min=0, 
-			   T_max=100,T_min=0.001,
+			   T_max=100,T_min=0,
 			   A_max=100,A_min=0,
 			   f_max=100,f_min=1;
         AnsiString a;
