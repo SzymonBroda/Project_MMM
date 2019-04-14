@@ -12,9 +12,7 @@
 #pragma resource "*.dfm"
 TForm2 *Form2;
 const double h=0.001;
-double A,alpha,T;
 
-double n_lin(double x1, double u);
 //---------------------------------------------------------------------------
 __fastcall TForm2::TForm2(TComponent* Owner)
         : TForm(Owner)
@@ -37,6 +35,7 @@ int TForm2::ZoomY(double y)
 }
 
 //------------------------------------------------------------
+<<<<<<< HEAD
 double TForm2::func(double t, double x_1[], double x_2[])//zwraca wartosc y (czyli x1)
 {
      ///// oblicznie wartosci y[n]
@@ -111,13 +110,15 @@ double TForm2::n_lin(double x1, double u)//nieliniowosc
 }
 
 //------------------------------------------------------------
+=======
+>>>>>>> copy
 
 void __fastcall TForm2::FormActivate(TObject *Sender)
 {
           TCanvas * canv; // additional variable
      int tx, ty;
      int i;
-     double x, y, u ;
+     double x ;
 
      canv = Image1->Canvas;
 
@@ -169,18 +170,24 @@ void __fastcall TForm2::FormActivate(TObject *Sender)
 	 }
 	 
      x = x1;
+<<<<<<< HEAD
      y = func(x, x_1, x_2);
+=======
+>>>>>>> copy
      tx = ZoomX(x);
-     ty = ZoomY(y);
+     ty = ZoomY(vec_y[0]);
      canv->MoveTo(tx,ty);
 
      // The cycle of enumerating of points and drawing the connecting lines
      for (int i = 0; i < n/h ; i++)
      {
          x = x + h;
+<<<<<<< HEAD
          y = func(x, x_1, x_2);
+=======
+>>>>>>> copy
          tx = ZoomX(x);
-         ty = ZoomY(y);
+         ty = ZoomY(vec_y[i+1]);
          canv->LineTo(tx,ty);
      }
 }
@@ -196,7 +203,6 @@ void __fastcall TForm2::Image1MouseMove(TObject *Sender, TShiftState Shift,
 }
 //---------------------------------------------------------------------------
 
-
 void __fastcall TForm2::addClick(TObject *Sender)
 {
         Form1->Show();
@@ -210,3 +216,12 @@ void __fastcall TForm2::closeClick(TObject *Sender)
 //---------------------------------------------------------------------------
 
 
+<<<<<<< HEAD
+=======
+
+
+
+
+
+
+>>>>>>> copy

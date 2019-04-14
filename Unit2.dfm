@@ -1,6 +1,6 @@
 object Form2: TForm2
-  Left = 271
-  Top = 356
+  Left = 296
+  Top = 457
   Cursor = crCross
   AutoSize = True
   BorderStyle = bsToolWindow
@@ -29,21 +29,21 @@ object Form2: TForm2
   end
   object y_pos: TEdit
     Left = 48
-    Top = 0
+    Top = 8
     Width = 49
     Height = 21
     TabOrder = 0
   end
   object x_pos: TEdit
     Left = 0
-    Top = 0
+    Top = 8
     Width = 49
     Height = 21
     TabOrder = 1
   end
   object add: TButton
     Left = 96
-    Top = 0
+    Top = 8
     Width = 75
     Height = 25
     Caption = 'Add new'
@@ -58,7 +58,7 @@ object Form2: TForm2
   end
   object close: TButton
     Left = 168
-    Top = 0
+    Top = 8
     Width = 75
     Height = 25
     Caption = 'Close'

@@ -38,7 +38,11 @@ public:       // User declarations
      double signal_type(double x);
      TForm2 *created_form;
 
+<<<<<<< HEAD
      double func(double t, double x_1[], double x_2[]);//wartosc y w danym momencie
+=======
+     double func(double x,double x_1[],double x_2[]);//wartosc y w danym momencie
+>>>>>>> copy
 
      double cf(double x1, double x2, double t, double K[], double L[]);//wartosci wpolczynnikow do metody rungego-kuty
 																		//K i L

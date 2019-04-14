@@ -60,11 +60,11 @@ object Form1: TForm1
     Caption = '<0,100>'
   end
   object T_range: TLabel
-    Left = 216
+    Left = 200
     Top = 32
-    Width = 39
+    Width = 54
     Height = 13
-    Caption = '<0,100>'
+    Caption = '<0.01,100>'
   end
   object A_range: TLabel
     Left = 408
@@ -93,20 +93,74 @@ object Form1: TForm1
     Height = 13
     Caption = '<1,100>'
   end
+  object Label1: TLabel
+    Left = 320
+    Top = 0
+    Width = 6
+    Height = 29
+    Caption = '.'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -23
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label2: TLabel
+    Left = 136
+    Top = 16
+    Width = 6
+    Height = 29
+    Caption = '.'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -23
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label3: TLabel
+    Left = 512
+    Top = 0
+    Width = 6
+    Height = 29
+    Caption = '.'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -23
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label4: TLabel
+    Left = 128
+    Top = 0
+    Width = 6
+    Height = 29
+    Caption = '.'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -23
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+  end
   object A_: TEdit
     Left = 456
     Top = 8
-    Width = 121
+    Width = 57
     Height = 21
     TabOrder = 0
+    Text = '1'
     OnChange = A_Change
   end
   object T_: TEdit
     Left = 264
     Top = 8
-    Width = 121
+    Width = 57
     Height = 21
     TabOrder = 1
+    Text = '1'
     OnChange = T_Change
   end
   object S1: TButton
@@ -171,9 +225,10 @@ object Form1: TForm1
   object alpha_: TEdit
     Left = 72
     Top = 8
-    Width = 121
+    Width = 57
     Height = 21
     TabOrder = 5
+    Text = '1'
     OnChange = alpha_Change
   end
   object T_S: TScrollBar
@@ -216,5 +271,29 @@ object Form1: TForm1
     Position = 1
     TabOrder = 10
     OnScroll = f_SScroll
+  end
+  object alpha_p: TEdit
+    Left = 136
+    Top = 8
+    Width = 57
+    Height = 21
+    TabOrder = 11
+    Text = '0'
+  end
+  object T_p: TEdit
+    Left = 328
+    Top = 8
+    Width = 57
+    Height = 21
+    TabOrder = 12
+    Text = '0'
+  end
+  object A_p: TEdit
+    Left = 520
+    Top = 8
+    Width = 57
+    Height = 21
+    TabOrder = 13
+    Text = '0'
   end
 end

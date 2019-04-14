@@ -8,6 +8,8 @@
 #include <StdCtrls.hpp>
 #include <Forms.hpp>
 #include <ExtCtrls.hpp>
+#include <vector>
+#include <ExtCtrls.hpp>
 #include "PERFGRAP.h"
 //---------------------------------------------------------------------------
 class TForm2 : public TForm
@@ -29,15 +31,13 @@ private: // User declarations
 public:       // User declarations
      __fastcall TForm2(TComponent* Owner);
      double x1, x2, y1, y2;
-     double T,alpha,A;
-     AnsiString signal;
-     double P; // Period
+     std::vector <double> vec_y  ;
      int n;
      int ZoomX(double x);
      int ZoomY(double y);
-     double signal_type(double x);
      TForm2 *created_form;
 
+<<<<<<< HEAD
      double func(double t, double x_1[], double x_2[]);//wartosc y w danym momencie
 
      double cf(double x1, double x2, double t, double K[], double L[]);//wartosci wpolczynnikow do metody rungego-kuty
@@ -58,6 +58,9 @@ public:       // User declarations
      // f = x2
      // g = nie_lin(u-x1)/T - x2/T
      //
+=======
+
+>>>>>>> copy
 };
 //---------------------------------------------------------------------------
 extern PACKAGE TForm2 *Form2;
