@@ -15,11 +15,11 @@ TForm1 *Form1;
 			   alpha=1, A=1,          	//parametry elementu nieliniowego		
 			   f=1, P;                  //czestotliwosc przebiegu wejciowego
         double alpha_max=100, alpha_min=0, 
-			   T_max=100,T_min=0.001,
+			   T_max=100,T_min=0,
 			   A_max=100,A_min=0,
-			   f_max=100,f_min=1;
+			   f_max=100,f_min=0.001;
         AnsiString a;
-        const double h=0.001, n=10;
+        const double h=0.001, n=10;     // h- krok ca³kowania  n-czas symulacji?
         AnsiString signal;
 //---------------------------------------------------------------------------
 __fastcall TForm1::TForm1(TComponent* Owner)
@@ -148,9 +148,18 @@ void __fastcall TForm1::S1Click(TObject *Sender)
          }
          TForm2 *form= new TForm2(this) ;
          form->vec_y = vec_y;
+
+            std::vector <double> vec_i;//wektor wejsc w kolejnych chwilach czasu
+         for (int i = 0; i < n/h ; i++)
+         {
+                t = t + h;
+                vec_i.push_back(signal_type(t));//obliczanie wartosci wejscia
+         }
+         form->vec_i = vec_i;
+
          form->n = 10;
          form->x1 = 0;
-         form->x2 = 5;
+         form->x2 = 9.9;
          form->y1 = -2;
          form->y2 = 2;
          form->Visible=true;
@@ -181,9 +190,17 @@ void __fastcall TForm1::S3Click(TObject *Sender)
          }
          TForm2 *form= new TForm2(this);
          form->vec_y = vec_y;
+         std::vector <double> vec_i;//wektor wejsc w kolejnych chwilach czasu
+         for (int i = 0; i < n/h ; i++)
+         {
+                t = t + h;
+                vec_i.push_back(signal_type(t));//obliczanie wartosci wejscia
+         }
+         form->vec_i = vec_i;
+
          form->n = 10;
          form->x1 = 0;
-         form->x2 = 5;
+         form->x2 = 9.9;
          form->y1 = -2;
          form->y2 = 2;
          form->Visible=true;
@@ -215,9 +232,17 @@ void __fastcall TForm1::S2Click(TObject *Sender)
          }
          TForm2 *form= new TForm2(this) ;
          form->vec_y = vec_y;
+         std::vector <double> vec_i;//wektor wejsc w kolejnych chwilach czasu
+         for (int i = 0; i < n/h ; i++)
+         {
+                t = t + h;
+                vec_i.push_back(signal_type(t));//obliczanie wartosci wejscia
+         }
+         form->vec_i = vec_i;
+
          form->n = 10;
          form->x1 = 0;
-         form->x2 = 5;
+         form->x2 = 9.9;
          form->y1 = -2;
          form->y2 = 2;
          form->Visible=true;
@@ -239,7 +264,7 @@ void __fastcall TForm1::f_Change(TObject *Sender)
      {
          try
          {
-                f = f_->Text.ToDouble();
+                f = f_->Text.ToDouble()+ (f_p->Text.ToDouble()/1000);
                 if (f>f_max || f<f_min)
                  {
                           ShowMessage ("Podana liczba jest spoza zakresu.") ;
@@ -347,12 +372,12 @@ void __fastcall TForm1::A_pChange(TObject *Sender)
                                  ShowMessage ("Podana liczba jest spoza zakresu.") ;
                                  A=1;
                                  A_->Text="1";
-                                 A_p->Text="0";
+                                 A_p->Text="000";
                          }
                   }
                   catch(...)
                  {
-                         A_p->Text="100";
+                         A_p->Text="000";
                          ShowMessage ("Niepoprawne wartoœci. Spróbuj ponownie.");
                  }
         }
@@ -406,6 +431,37 @@ if(T_->Text !="")
                }
        }
        else T_p->Text="000";
+}
+//---------------------------------------------------------------------------
+
+
+
+
+
+
+
+void __fastcall TForm1::f_pChange(TObject *Sender)
+{
+            if(f_p->Text !="")
+        {
+                try
+                {
+                         f = f_->Text.ToDouble() + (f_p->Text.ToDouble()/1000);
+                         if (f>f_max || f<f_min)
+                        {
+                                 ShowMessage ("Podana liczba jest spoza zakresu.") ;
+                                 f=1;
+                                 f_->Text="1";
+                                 f_p->Text="000";
+                         }
+                  }
+                  catch(...)
+                 {
+                         f_p->Text="000";
+                         ShowMessage ("Niepoprawne wartoœci. Spróbuj ponownie.");
+                 }
+        }
+        else f_p->Text="000";
 }
 //---------------------------------------------------------------------------
 

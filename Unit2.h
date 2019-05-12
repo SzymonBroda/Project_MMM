@@ -32,6 +32,7 @@ public:       // User declarations
      __fastcall TForm2(TComponent* Owner);
      double x1, x2, y1, y2;
      std::vector <double> vec_y  ;
+     std::vector <double> vec_i  ;
      int n;
      int ZoomX(double x);
      int ZoomY(double y);

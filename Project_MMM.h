@@ -29,16 +29,17 @@ __published:
         TLabel *T_range;
         TLabel *A_range;
         TLabel *f_T;
-        TLabel *f_range;
         TEdit *f_;
         TScrollBar *f_S;
         TEdit *alpha_p;
         TEdit *T_p;
         TEdit *A_p;
-        TLabel *Label1;
-        TLabel *Label2;
-        TLabel *Label3;
-        TLabel *Label4;
+        TLabel *dot;
+        TLabel *dot1;
+        TLabel *dot2;
+        TEdit *f_p;
+        TLabel *dot3;
+        TLabel *f_range;
         void __fastcall alpha_SScroll(TObject *Sender,
           TScrollCode ScrollCode, int &ScrollPos);
         void __fastcall A_SScroll(TObject *Sender, TScrollCode ScrollCode,
@@ -57,6 +58,7 @@ __published:
         void __fastcall A_pChange(TObject *Sender);
         void __fastcall alpha_pChange(TObject *Sender);
         void __fastcall T_pChange(TObject *Sender);
+        void __fastcall f_pChange(TObject *Sender);
         
 public:		
      __fastcall TForm1(TComponent* Owner);
