@@ -38,29 +38,29 @@ int TForm2::ZoomY(double y)
 
 void __fastcall TForm2::FormActivate(TObject *Sender)
 {
-          TCanvas * canv; // additional variable
+     TCanvas * canv; // additional variable
      int tx, ty;
      int i;
      double x ;
 
      canv = Image1->Canvas;
 
-     // 1. Setting the boundaries of screen coordinates
+     //  Setting the boundaries of screen coordinates
      xx1 = 0;
      yy1 = 0;
      xx2 = Image1->Width;
      yy2 = Image1->Height;
 
-     // 2. Drawing of graph
+     // Drawing of graph
      canv->Pen->Color = clBlack;
      canv->Brush->Color = clWhite;
      canv->Rectangle(0, 0, Image1->Width, Image1->Height);
 
-     // 2.1. Drawing of coordinate axes
+     // Drawing of coordinate axes
      canv->Pen->Color =clBlack;
      canv->Pen->Width = 2;
 
-     // 2.2. Take the point of origin X of the screen.
+     // Take the point of origin X of the screen.
      tx = ZoomX(0);
      ty = ZoomY(y1);
      canv->MoveTo(tx,ty);
@@ -70,7 +70,7 @@ void __fastcall TForm2::FormActivate(TObject *Sender)
      ty = ZoomY(y2);
      canv->LineTo(tx,ty);
 
-     // 2.3. Take the point of origin X of the screen.
+     // Take the point of origin X of the screen.
      tx = ZoomX(x1);
      ty = ZoomY(0);
      canv->MoveTo(tx,ty);
@@ -80,9 +80,25 @@ void __fastcall TForm2::FormActivate(TObject *Sender)
      ty = ZoomY(0);
      canv->LineTo(tx,ty);
 
-     // 3. Drawing of the graph.
-     canv->Pen->Color = clRed; // color
+     // drawing input
+     canv->Pen->Color = clBlue; //color
 
+     // coordinates of the first point
+      x = x1;
+     tx = ZoomX(x);
+     ty = ZoomY(vec_i[0]);
+     canv->MoveTo(tx,ty);
+     // The cycle of enumerating of points and drawing the connecting lines
+     for (int i = 0; i < n/h ; i++)
+     {
+         x = x + h;
+         tx = ZoomX(x);
+         ty = ZoomY(vec_i[i+1]);
+         canv->LineTo(tx,ty);
+     }
+
+     // Drawing output.
+     canv->Pen->Color = clRed; // color
      // coordinates of the first point
      x = x1;
      tx = ZoomX(x);
@@ -97,6 +113,7 @@ void __fastcall TForm2::FormActivate(TObject *Sender)
          ty = ZoomY(vec_y[i+1]);
          canv->LineTo(tx,ty);
      }
+
 }
 //---------------------------------------------------------------------------
 
@@ -110,6 +127,7 @@ void __fastcall TForm2::Image1MouseMove(TObject *Sender, TShiftState Shift,
 }
 //---------------------------------------------------------------------------
 
+
 void __fastcall TForm2::addClick(TObject *Sender)
 {
         Form1->Show();
@@ -121,6 +139,14 @@ void __fastcall TForm2::closeClick(TObject *Sender)
         created_form->Close();
 }
 //---------------------------------------------------------------------------
+
+
+
+
+
+
+
+
 
 
 
