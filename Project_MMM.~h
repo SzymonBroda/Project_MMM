@@ -58,10 +58,7 @@ __published:
         void __fastcall A_pChange(TObject *Sender);
         void __fastcall alpha_pChange(TObject *Sender);
         void __fastcall T_pChange(TObject *Sender);
-<<<<<<< HEAD
-=======
         void __fastcall f_pChange(TObject *Sender);
->>>>>>> copy
         
 public:		
      __fastcall TForm1(TComponent* Owner);

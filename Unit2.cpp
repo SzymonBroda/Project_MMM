@@ -80,15 +80,15 @@ void __fastcall TForm2::FormActivate(TObject *Sender)
      ty = ZoomY(0);
      canv->LineTo(tx,ty);
 
-     // drawing input
-     canv->Pen->Color = clBlue; //color
-
+    //------------------------------------------------ input
      // coordinates of the first point
+     canv->Pen->Color = clGray ;
+     //color
       x = x1;
      tx = ZoomX(x);
      ty = ZoomY(vec_i[0]);
      canv->MoveTo(tx,ty);
-     // The cycle of enumerating of points and drawing the connecting lines
+
      for (int i = 0; i < n/h ; i++)
      {
          x = x + h;
@@ -96,8 +96,22 @@ void __fastcall TForm2::FormActivate(TObject *Sender)
          ty = ZoomY(vec_i[i+1]);
          canv->LineTo(tx,ty);
      }
+     //--------------------------drawing error
+     canv->Pen->Color = clGreen; //color
+     x = x1;
+     tx = ZoomX(x);
+     ty = ZoomY(vec_i[0]-vec_y[0]);
+     canv->MoveTo(tx,ty);
 
-     // Drawing output.
+     for (int i = 0; i < n/h ; i++)
+     {
+         x = x + h;
+         tx = ZoomX(x);
+         ty = ZoomY(vec_i[i+1]-vec_y[i+1]);
+         canv->LineTo(tx,ty);
+     }
+
+     //------------------------- Drawing output.
      canv->Pen->Color = clRed; // color
      // coordinates of the first point
      x = x1;
@@ -139,19 +153,4 @@ void __fastcall TForm2::closeClick(TObject *Sender)
         created_form->Close();
 }
 //---------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

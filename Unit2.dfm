@@ -4,7 +4,7 @@ object Form2: TForm2
   Cursor = crCross
   BorderStyle = bsToolWindow
   Caption = 'Graph'
-  ClientHeight = 202
+  ClientHeight = 281
   ClientWidth = 1345
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -21,7 +21,7 @@ object Form2: TForm2
     Left = 0
     Top = 0
     Width = 1345
-    Height = 201
+    Height = 281
     AutoSize = True
     Center = True
     Transparent = True

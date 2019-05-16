@@ -25,6 +25,7 @@ __published:	// IDE-managed Components
           int X, int Y);
         void __fastcall addClick(TObject *Sender);
         void __fastcall closeClick(TObject *Sender);
+        void __fastcall Image1Click(TObject *Sender);
 private: // User declarations
      int xx1, xx2, yy1, yy2;
 
@@ -32,6 +33,7 @@ public:       // User declarations
      __fastcall TForm2(TComponent* Owner);
      double x1, x2, y1, y2;
      std::vector <double> vec_y  ;
+     std::vector <double> vec_i  ;
      int n;
      int ZoomX(double x);
      int ZoomY(double y);
